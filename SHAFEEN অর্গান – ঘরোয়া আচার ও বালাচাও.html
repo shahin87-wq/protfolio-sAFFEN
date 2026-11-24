@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SHAFEEN অর্গান – ঘরোয়া আচার ও বালাচাও</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{color-scheme:light;--d:#7a2a1d;--a:#b8452e;--l:#fbe9e2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Hind Siliguri',system-ui,sans-serif;background:var(--l);color:#2b2118;transition:background .4s}
+.sf{font-family:'Noto Serif Bengali','Hind Siliguri',serif}
+.bd{background:var(--d);color:#fff}
+.tx-d{color:var(--d)}.tx-a{color:var(--a)}
+.card{background:#fff;border-radius:18px;border:1px solid color-mix(in srgb,var(--d) 14%,transparent)}
+.chip{white-space:nowrap;border-radius:999px;padding:6px 14px;font-weight:600;border:1.5px solid currentColor;background:transparent;color:#fff}
+.chip.on{background:#fff;color:var(--d)}
+.chip.o{color:var(--d)}
+.orb{width:min(78vw,340px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font-size:clamp(110px,30vw,190px);background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--a) 45%,#fff),var(--a) 75%);box-shadow:0 30px 60px -20px var(--d)}
+.sm-orb{position:absolute;font-size:44px}
+details>summary{cursor:pointer;list-style:none;font-weight:600}
+details>summary::-webkit-details-marker{display:none}
+.btn{display:inline-block;background:var(--a);color:#fff;font-weight:700;border-radius:14px;padding:14px 26px;text-align:center}
+.bd .btn{background:#fff;color:var(--d)}
+.btn:focus-visible,.chip:focus-visible,summary:focus-visible,.pk:focus-visible{outline:3px solid #f5b400;outline-offset:2px}
+.pk.sel{outline:3px solid var(--a)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="sticky top-0 z-20 bd" style="padding-top:env(safe-area-inset-top,0px)">
+  <div class="max-w-5xl mx-auto px-4 py-2 flex items-center gap-3">
+    <div class="sf font-extrabold text-lg shrink-0">🌿 SHAFEEN অর্গান</div>
+    <nav id="chips" class="flex gap-2 overflow-x-auto" style="scrollbar-width:none" aria-label="পণ্য"></nav>
+  </div>
+</header>
+<main id="app"></main>
+<footer class="bd text-center text-sm py-8 px-4">
+  <div class="sf font-extrabold text-lg">SHAFEEN অর্গান</div>
+  <p class="opacity-80 mt-1">ঘরে তৈরি আচার ও বালাচাও, আপনার দোরগোড়ায়</p>
+  <p class="opacity-80 mt-3">কামারপুর, গোবিন্দগঞ্জ, গাইবান্ধা · ০১৭৩৭-৯২৪৫২৫</p><p class="opacity-60 mt-2">© ২০২৬ SHAFEEN অর্গান</p>
+</footer>
+<script>
+var WA="8801737924525";
+/* n নাম, e ইমোজি, d গাঢ় রং, a মূল রং, l পেজের হালকা রং, h হেডলাইন, s সাব, x প্রথম ধাপ, b ৫০০ গ্রামের দাম, k ধরন */
+var P=[
+{n:"বড়ই আচার",e:"🍒",d:"#6e2418",a:"#b8452e",l:"#fbe6df",h:"টক-ঝাল-মিষ্টি বড়ই আচারের আসল স্বাদ",s:"পাকা বড়ই, সরিষার তেল আর ঘরোয়া মশলায় তৈরি।",x:"মৌসুমের পাকা বড়ই বেছে ধুয়ে শুকানো",b:360,k:"p"},
+{n:"রসুন আচার",e:"🧄",d:"#4d3a1f",a:"#a8812e",l:"#f6eddb",h:"ঝাঁঝালো রসুন আচার, প্রতি কামড়ে ঘ্রাণ",s:"খোসা ছাড়ানো দেশি রসুন, সরিষার তেলে জারানো।",x:"দেশি রসুন বেছে খোসা ছাড়িয়ে শুকানো",b:420,k:"p"},
+{n:"তেঁতুল আচার",e:"🫘",d:"#59341a",a:"#a8622a",l:"#f4e5d3",h:"গাঢ় তেঁতুল আচার, ভাতের সঙ্গে জমে যায়",s:"পাকা তেঁতুলের টক আর মশলার ঝাল একসাথে।",x:"পাকা তেঁতুল বেছে বিচি ছাড়িয়ে নেওয়া",b:340,k:"p"},
+{n:"মিক্স আচার",e:"🌶️",d:"#7a3210",a:"#d9731e",l:"#fcebd8",h:"এক বয়ামে সব স্বাদ: মিক্স আচার",s:"কয়েক ধরনের ফল ও সবজির মিশ্র আচার, ঘরোয়া মশলায়।",x:"মৌসুমি ফল ও সবজি বেছে কেটে শুকানো",b:380,k:"p"},
+{n:"ইলিশ আচার",e:"🐟",d:"#1f4a5a",a:"#3b8aa3",l:"#e0eef2",h:"ইলিশের স্বাদের ঐতিহ্যবাহী আচার",s:"বাছাই করা ইলিশ, সরিষার তেল ও মশলায় বহু যত্নে তৈরি।",x:"তাজা ইলিশ কেটে পরিষ্কার করে ভাজা",b:850,k:"p"},
+{n:"আম আচার",e:"🥭",d:"#5a5a10",a:"#d19a1a",l:"#fbf2cc",h:"কাঁচা আমের টক-ঝাল আচার, গ্রামের স্বাদে",s:"কাঁচা আম, সরিষার তেল ও পাঁচফোড়নে তৈরি।",x:"কাঁচা আম বেছে কেটে রোদে শুকানো",b:350,k:"p"},
+{n:"চালতা আচার",e:"🍏",d:"#3d5a1f",a:"#7a9a2a",l:"#e8f0d6",h:"চালতার আচার: যে স্বাদ ভোলা যায় না",s:"টকটকে চালতা, মশলা ও সরিষার তেলে জারানো।",x:"চালতা বেছে কেটে রোদে শুকানো",b:360,k:"p"},
+{n:"চিংড়ি বালাচাও",e:"🦐",d:"#7a2412",a:"#cf4a22",l:"#fce4dc",h:"মচমচে ঝাল চিংড়ি বালাচাও",s:"শুকনো চিংড়ি, পেঁয়াজ, রসুন ও মরিচে ভাজা। ভাতের সঙ্গে অসাধারণ।",x:"পরিষ্কার শুঁটকি চিংড়ি বেছে ভেজে নেওয়া",b:520,k:"b"},
+{n:"মিক্স বালাচাও",e:"🍤",d:"#6b2f0f",a:"#c5671a",l:"#fbe8d6",h:"মিক্স বালাচাও: ঝাল, মচমচে, ভরপুর",s:"চিংড়ি ও অন্যান্য শুঁটকির মিশ্রণ, ঘরোয়া মশলায়।",x:"বিভিন্ন শুঁটকি বেছে ভেজে নেওয়া",b:480,k:"b"},
+{n:"কম্বো প্যাকেজ",e:"🎁",d:"#1f4a3a",a:"#b8892a",l:"#e3efe8",h:"সব স্বাদ একসাথে: কম্বো প্যাকেজ",s:"আপনার পছন্দের আচার ও বালাচাও এক বাক্সে, সাশ্রয়ী দামে।",x:"",b:0,k:"c"}
+];
+var cur=0,sel=1;
+var bn=function(x){return String(x).replace(/\d/g,function(d){return "০১২৩৪৫৬৭৮৯"[d]})};
+var money=function(x){return "৳"+bn(x.toLocaleString("en-US"))};
+function pks(p){
+ if(p.k=="c")return [["৩টি বয়াম (২৫০ গ্রাম)",850,1020],["৫টি বয়াম (২৫০ গ্রাম)",1350,1650],["৭টি বয়াম (২৫০ গ্রাম)",1850,2300]];
+ var r=function(m){return Math.round(p.b*m/10)*10},o=function(v){return Math.round(v*1.15/10)*10};
+ return [["২৫০ গ্রাম",r(.55),o(r(.55))],["৫০০ গ্রাম",p.b,o(p.b)],["১ কেজি",r(1.9),o(r(1.9))]];
+}
+function list(a,ic){return a.map(function(t){return '<li class="flex gap-2"><span>'+ic+'</span><span>'+t+'</span></li>'}).join("")}
+function sec(t,b,id){return '<section'+(id?' id="'+id+'"':'')+' class="px-4 py-10"><div class="max-w-5xl mx-auto"><h2 class="sf font-extrabold text-2xl sm:text-3xl tx-d mb-6">'+t+'</h2>'+b+'</div></section>'}
+function render(){
+ var p=P[cur],c=p.k=="c",bl=p.k=="b",r=document.documentElement.style;
+ r.setProperty("--d",p.d);r.setProperty("--a",p.a);r.setProperty("--l",p.l);
+ document.title=p.n+" – SHAFEEN অর্গান";
+ document.getElementById("chips").innerHTML=P.map(function(q,i){return '<button class="chip'+(i==cur?' on':'')+'" onclick="go('+i+')">'+q.e+' '+q.n+'</button>'}).join("");
+ var K=pks(p),pk=K[sel],h='';
+ var pr=c?["আপনার পছন্দের স্বাদ বেছে নিন","প্রতিটি বয়াম আলাদা করে যত্নে প্যাক","একসাথে বাক্সে ভরে পাঠানো"]:[p.x,bl?"পেঁয়াজ, রসুন, মরিচ ও মশলায় ভাজা":"মশলা ও সরিষার তেলে জারিয়ে নেওয়া",bl?"ঠান্ডা করে কাচের বয়ামে ভরা":"রোদে সময় দিয়ে পাকিয়ে কাচের বয়ামে ভরা"];
+ var g=bl?["দেখে মনে হবে হাতে ভাজা, একরকম রং নয়","তেলে পোড়া গন্ধ নেই, মশলার ঘ্রাণ","মচমচে, স্যাঁতসেঁতে নয়","বয়ামে প্যাকিংয়ের তারিখ লেখা"]:["তেলের ওপর ভাসা মশলা, তেল পরিষ্কার","কৃত্রিম ভিনেগারের ঝাঁঝালো গন্ধ নেই","রং প্রাকৃতিক, চকচকে নকল রং নয়","বয়ামে প্যাকিংয়ের তারিখ ও ব্যাচ লেখা"];
+ var df=bl?[["বাসি বা নরম শুঁটকি","তাজা ভাজা, মচমচে"],["অতিরিক্ত রং ও এসেন্স","মশলার প্রাকৃতিক রং"],["পুরনো তেলে ভাজা","পরিষ্কার সরিষার তেল"],["ওজনে কম","নির্ধারিত ওজন নিশ্চিত"]]:[["কৃত্রিম ভিনেগার ও এসেন্স","সরিষার তেল ও মশলা"],["অতিরিক্ত রং মেশানো","প্রাকৃতিক রং"],["পুরনো ও নরম উপাদান","মৌসুমি বাছাই করা উপাদান"],["প্যাকিং তারিখ নেই","প্রতিটি বয়ামে তারিখ"]];
+ var f=[["কতদিন ভালো থাকে?",bl?"শুকনো বয়ামে ঢাকনা এঁটে রাখলে ২–৩ মাস।":"পরিষ্কার শুকনো চামচ ব্যবহার করলে ৬ মাস বা বেশি।"],["ফ্রিজে রাখতে হবে?","দরকার নেই। ঠান্ডা, শুকনো জায়গায় রাখুন।"],["কীভাবে অর্ডার করব?","অর্ডার বাটনে চাপুন, হোয়াটসঅ্যাপে নাম, ঠিকানা ও ফোন পাঠান।"],["পছন্দ না হলে?","পণ্যে সমস্যা হলে জানান, আমরা বদলে দেব।"]];
+ h+='<section class="px-4 pt-8 pb-12"><div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">'+
+ '<div class="order-2 md:order-1"><p class="font-semibold tx-a">'+p.n+' · ঘরে তৈরি</p>'+
+ '<h1 class="sf font-extrabold tx-d text-3xl sm:text-5xl leading-tight mt-2">'+p.h+'</h1>'+
+ '<p class="mt-4 text-lg max-w-md">'+p.s+'</p>'+
+ '<div class="mt-6 flex flex-wrap gap-3 items-center"><a href="#order" class="btn">অর্ডার করুন</a><a href="#genuine" class="chip o">খাঁটি চিনবেন যেভাবে</a></div>'+
+ '<p class="mt-4 text-sm opacity-80">ক্যাশ অন ডেলিভারি · সারা বাংলাদেশে ডেলিভারি</p></div>'+
+ '<div class="order-1 md:order-2 flex justify-center relative"><div class="orb" role="img" aria-label="'+p.n+'">'+p.e+'</div><span class="sm-orb" style="top:4%;left:6%">🫙</span><span class="sm-orb" style="bottom:6%;right:4%">🌿</span></div></div></section>';
+ if(c)h+=sec("কম্বোতে কী কী থাকবে",'<p class="mb-4">নিচের যেকোনো বয়াম বেছে নিন। অর্ডারের সময় পছন্দ জানান।</p><div class="grid grid-cols-3 sm:grid-cols-5 gap-3">'+P.slice(0,9).map(function(q){return '<div class="card p-3 text-center"><div class="text-4xl">'+q.e+'</div><div class="text-sm font-semibold mt-1">'+q.n+'</div></div>'}).join("")+'</div>');
+ h+=sec(c?"কোথায় ও কীভাবে তৈরি":"কোথা থেকে আসে, কীভাবে তৈরি",'<p class="max-w-2xl mb-5">আমাদের রান্নাঘরে ঘরোয়া পদ্ধতিতে ছোট ব্যাচে তৈরি। উৎস এলাকার নাম নিজের তথ্য দিয়ে বসান।</p><div class="grid sm:grid-cols-3 gap-4">'+pr.map(function(t,i){return '<div class="card p-5"><div class="sf font-extrabold text-2xl tx-a">ধাপ '+bn(i+1)+'</div><p class="mt-1">'+t+'</p></div>'}).join("")+'</div>');
+ h+=sec("খাঁটি চেনার উপায়",'<ul class="card p-5 grid sm:grid-cols-2 gap-3">'+list(g,"✅")+'</ul>',"genuine");
+ h+=sec("কেন আপনার প্রয়োজন",'<ul class="grid sm:grid-cols-2 gap-3">'+(c?["একসাথে সব স্বাদ, আলাদা অর্ডারের ঝামেলা নেই","উপহার দেওয়ার জন্য সুন্দর","আলাদা কেনার চেয়ে সাশ্রয়ী","ভাত, খিচুড়ি, পরোটায় বৈচিত্র্য"]:["ঘরোয়া স্বাদ, বাজারের একঘেয়ে স্বাদ নয়","সরিষার তেল ও মশলায় তৈরি, কৃত্রিম এসেন্স নেই","ভাত, খিচুড়ি, পরোটা ও পান্তার সঙ্গে দারুণ","ছোট ব্যাচে তৈরি, তাই সতেজ"]).map(function(t){return '<li class="card p-4 font-medium">'+t+'</li>'}).join("")+'</ul>');
+ h+=sec("কারা কিনবেন, কারা কিনবেন না",'<div class="grid sm:grid-cols-2 gap-4"><div class="card p-5"><h3 class="font-bold mb-2 tx-d">কিনতে পারেন</h3><ul class="space-y-2">'+list(["যারা ঘরোয়া স্বাদের আচার বা বালাচাও চান","যারা উপহার বা পরিবারের জন্য কিনতে চান"],"👍")+'</ul></div><div class="card p-5"><h3 class="font-bold mb-2 tx-d">সতর্কতা</h3><ul class="space-y-2">'+list(["অতিরিক্ত ঝাল ও তেল পছন্দ না করলে আগে ছোট সাইজ নিন","চিকিৎসকের নির্দেশে খাবার নিয়ন্ত্রণে থাকলে পরামর্শ নিন"],"⚠️")+'</ul></div></div>');
+ h+=sec("বাজারের ভেজাল বনাম আমাদের "+p.n,'<div class="card overflow-hidden"><div class="row font-bold text-center text-white"><div class="p-3" style="background:#8a2f2f">বাজারে ভেজাল</div><div class="p-3 bd">SHAFEEN অর্গান</div></div>'+df.map(function(x){return '<div class="row" style="background:color-mix(in srgb,var(--d) 12%,transparent)"><div class="bg-white p-3">❌ '+x[0]+'</div><div class="bg-white p-3">✅ '+x[1]+'</div></div>'}).join("")+'</div>');
+ h+=sec("কোয়ালিটি নিশ্চয়তা",'<div class="bd rounded-2xl p-6 grid sm:grid-cols-3 gap-4 text-center"><div><div class="text-3xl">🔍</div><b>মানে সমস্যা হলে</b><p class="opacity-90 text-sm">বদলে বা টাকা ফেরত</p></div><div><div class="text-3xl">📦</div><b>নিরাপদ প্যাকেজিং</b><p class="opacity-90 text-sm">ভাঙা বা লিক হলে বদলে দেব</p></div><div><div class="text-3xl">🤝</div><b>আগে দেখে, পরে টাকা</b><p class="opacity-90 text-sm">ক্যাশ অন ডেলিভারি</p></div></div>');
+ h+=sec("প্যাকেজ ও দাম",'<div class="grid sm:grid-cols-3 gap-4">'+K.map(function(k,i){return '<button class="pk card p-5 text-left'+(i==sel?' sel':'')+'" onclick="pick('+i+')" aria-pressed="'+(i==sel)+'"><div class="font-bold text-lg">'+k[0]+'</div><div class="sf font-extrabold text-2xl tx-a">'+money(k[1])+'</div><div class="text-sm opacity-70 line-through">'+money(k[2])+'</div><div class="mt-1 text-sm font-semibold" style="color:#1b7a3a">সাশ্রয় '+money(k[2]-k[1])+'</div></button>'}).join("")+'</div><p class="mt-4 card p-4"><b>ডেলিভারি চার্জ:</b> ঢাকায় ৮০ টাকা, ঢাকার বাইরে ১২০ টাকা। ঢাকায় ১–২ দিন, ঢাকার বাইরে ২–৪ দিনে পৌঁছে যাবে।</p>');
+ h+=sec("গ্রাহকরা যা বলছেন",'<div class="grid sm:grid-cols-2 gap-4">'+[["রহিমা বেগম","ঢাকা","ঘরের তৈরি স্বাদ পেলাম। বয়াম ভালোভাবে প্যাক করা ছিল।"],["তানভীর হোসেন","চট্টগ্রাম","ঝাল-টকের ভারসাম্য দারুণ, আবার অর্ডার করব।"]].map(function(v){return '<figure class="card p-5"><div>⭐⭐⭐⭐⭐</div><blockquote class="mt-2">'+v[2]+'</blockquote><figcaption class="mt-3 font-semibold tx-d">'+v[0]+', <span class="opacity-70 font-normal">'+v[1]+'</span></figcaption></figure>'}).join("")+'</div><p class="text-xs opacity-60 mt-2">নমুনা রিভিউ, আসল গ্রাহকদের মতামত দিয়ে বদলে নিন।</p>');
+ h+=sec("সাধারণ প্রশ্ন",'<div class="space-y-3">'+f.map(function(q){return '<details class="card p-4"><summary>'+q[0]+'</summary><p class="mt-2">'+q[1]+'</p></details>'}).join("")+'</div>');
+ h+='<section id="order" class="px-4 py-12"><div class="max-w-xl mx-auto bd rounded-3xl p-6 text-center"><h2 class="sf font-extrabold text-2xl">আজই '+p.n+' অর্ডার করুন</h2><p class="mt-2 opacity-90">নির্বাচিত: <b>'+pk[0]+' · '+money(pk[1])+'</b></p><a class="btn mt-5 w-full" target="_blank" rel="noopener" href="https://wa.me/'+WA+'?text='+encodeURIComponent("আসসালামু আলাইকুম, আমি "+p.n+" ("+pk[0]+") অর্ডার করতে চাই।")+'">অর্ডার করুন</a><p class="text-xs opacity-80 mt-3">হোয়াটসঅ্যাপে নাম, ঠিকানা ও ফোন নম্বর পাঠান। ক্যাশ অন ডেলিভারি। ডেলিভারি চার্জ: ঢাকায় ৮০ টাকা, ঢাকার বাইরে ১২০ টাকা।</p></div></section>';
+ h+=sec("আমাদের অন্য পণ্য",'<div class="grid grid-cols-3 sm:grid-cols-5 gap-3">'+P.map(function(q,i){return i==cur?'':'<button class="card p-3 text-center" onclick="go('+i+')"><div class="text-4xl">'+q.e+'</div><div class="font-bold text-sm mt-1" style="color:'+q.d+'">'+q.n+'</div></button>'}).join("")+'</div>');
+ h+=sec("যোগাযোগ ও ডেলিভারি",'<div class="grid sm:grid-cols-2 gap-4"><div class="card p-5 space-y-3"><div><b class="tx-d">ফোন ও হোয়াটসঅ্যাপ</b><br><a class="tx-a font-semibold" href="tel:+8801737924525">০১৭৩৭-৯২৪৫২৫</a></div><div><b class="tx-d">ইমেইল</b><br><a class="tx-a font-semibold break-all" href="mailto:shahinislamshahin87@gmail.com">shahinislamshahin87@gmail.com</a></div><div><b class="tx-d">ঠিকানা</b><br>কামারপুর, গোবিন্দগঞ্জ, গাইবান্ধা</div></div><div class="card p-5"><b class="tx-d">ডেলিভারি চার্জ</b><div class="mt-2 flex justify-between border-b py-2"><span>ঢাকার ভেতরে</span><b>৳৮০</b></div><div class="flex justify-between py-2"><span>ঢাকার বাইরে</span><b>৳১২০</b></div><p class="text-sm opacity-80 mt-2">ঢাকায় ১–২ দিন, ঢাকার বাইরে ২–৪ দিন। ক্যাশ অন ডেলিভারি।</p></div></div><a class="btn mt-4" href="tel:+8801737924525">কল করুন</a>');
+ document.getElementById("app").innerHTML=h;
+}
+function go(i){cur=i;sel=1;render();window.scrollTo({top:0})}
+function pick(i){sel=i;var y=window.scrollY;render();window.scrollTo(0,y)}
+render();
+</script>
+</body>
+</html>
